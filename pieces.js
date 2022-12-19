@@ -2,16 +2,22 @@
 const reponse = await fetch('pieces-autos.json');
 const responseData = await reponse.json();
 const pieces = responseData.data;
-
+// Création des balises
 const article = pieces[0];
+
 const imageElement = document.createElement('img');
 imageElement.src = article.image;
+
 const nomElement = document.createElement('h2');
 nomElement.innerText = article.nom;
+
 const prixElement = document.createElement('p');
-prixElement.innerText = `Prix: ${article.prix} €`;
+prixElement.innerText = `Prix: ${article.prix} € (${
+	article.prix < 35 ? '€' : '€€€'
+})`;
+
 const categorieElement = document.createElement('p');
-categorieElement.innerText = article.categorie;
+categorieElement.innerText = article.categorie ?? '(aucune catégorie)';
 
 const sectionFiches = document.querySelector('.fiches');
 sectionFiches.appendChild(imageElement);
