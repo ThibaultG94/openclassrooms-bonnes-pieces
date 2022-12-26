@@ -1,7 +1,6 @@
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch('pieces-autos.json');
-const responseData = await reponse.json();
-const pieces = responseData.data;
+const reponse = await fetch('http://localhost:8081/pieces');
+const pieces = await reponse.json();
 
 const genererPieces = (pieces) => {
 	for (let i = 0; i < pieces.length; i++) {
@@ -29,15 +28,19 @@ const genererPieces = (pieces) => {
 			? 'En stock'
 			: 'Rupture de stock';
 
+		const avisBouton = document.createElement('button');
+		avisBouton.dataset.id = article.id;
+		avisBouton.textContent = 'Afficher les avis';
+
 		// On rattache la balise article à la section Fiches
 		sectionFiches.appendChild(pieceElement);
-		// On rattache l'image à pieceElement (la balise article)
 		pieceElement.appendChild(imageElement);
 		pieceElement.appendChild(nomElement);
 		pieceElement.appendChild(prixElement);
 		pieceElement.appendChild(categorieElement);
 		pieceElement.appendChild(descriptionElement);
 		pieceElement.appendChild(stockElement);
+		pieceElement.appendChild(avisBouton);
 		// Idem pour le nom, le prix et la catégorie...
 	}
 };
