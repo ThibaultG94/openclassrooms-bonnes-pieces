@@ -1,3 +1,5 @@
+import { ajouterListenersAvis } from './avis';
+
 // Récupération des pièces depuis le fichier JSON
 const reponse = await fetch('http://localhost:8081/pieces');
 const pieces = await reponse.json();
@@ -43,6 +45,8 @@ const genererPieces = (pieces) => {
 		pieceElement.appendChild(avisBouton);
 		// Idem pour le nom, le prix et la catégorie...
 	}
+	// Ajout de la fonction ajoutListenerAvis
+	ajouterListenersAvis();
 };
 
 // Premier affichage de la page
