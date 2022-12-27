@@ -43,7 +43,6 @@ const genererPieces = (pieces) => {
 		pieceElement.appendChild(descriptionElement);
 		pieceElement.appendChild(stockElement);
 		pieceElement.appendChild(avisBouton);
-		// Idem pour le nom, le prix et la catégorie...
 	}
 	// Ajout de la fonction ajoutListenerAvis
 	ajouterListenersAvis();
