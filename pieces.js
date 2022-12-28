@@ -1,8 +1,11 @@
-import { ajouterListenersAvis } from './avis';
+// import { ajouterListenersAvis } from './avis';
+// import { ajoutListenerEnvoyerAvis } from './avis';
 
 // Récupération des pièces depuis le fichier JSON
 const reponse = await fetch('http://localhost:8081/pieces');
 const pieces = await reponse.json();
+// On appel la fonction pour ajouter le listner au formulaire
+// ajoutListenerEnvoyerAvis();
 
 const genererPieces = (pieces) => {
 	for (let i = 0; i < pieces.length; i++) {
@@ -30,9 +33,9 @@ const genererPieces = (pieces) => {
 			? 'En stock'
 			: 'Rupture de stock';
 
-		const avisBouton = document.createElement('button');
-		avisBouton.dataset.id = article.id;
-		avisBouton.textContent = 'Afficher les avis';
+		// const avisBouton = document.createElement('button');
+		// avisBouton.dataset.id = article.id;
+		// avisBouton.textContent = 'Afficher les avis';
 
 		// On rattache la balise article à la section Fiches
 		sectionFiches.appendChild(pieceElement);
@@ -42,10 +45,10 @@ const genererPieces = (pieces) => {
 		pieceElement.appendChild(categorieElement);
 		pieceElement.appendChild(descriptionElement);
 		pieceElement.appendChild(stockElement);
-		pieceElement.appendChild(avisBouton);
+		// pieceElement.appendChild(avisBouton);
 	}
 	// Ajout de la fonction ajoutListenerAvis
-	ajouterListenersAvis();
+	// ajouterListenersAvis();
 };
 
 // Premier affichage de la page

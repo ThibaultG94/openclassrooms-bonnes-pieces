@@ -15,3 +15,27 @@ export const ajouterListenersAvis = () => {
 		});
 	}
 };
+
+export function ajoutListenerEnvoyerAvis() {
+	const formulaireAvis = document.querySelector('.formulaire-avis');
+	formulaireAvis.addEventListener('submit', function (e) {
+		e.preventDefault();
+		// Création de l'objet du nouvel avis.
+		const avis = {
+			pieceId: parseInt(e.target.querySelector('[name=piece-id]').value),
+			utilisateur: e.target.querySelector('[name=utilisateur]').value,
+			commentaire: e.target.querySelector('[name=commentaire]').value,
+			nbEtoiles: parseInt(
+				e.target.querySelector('[name=nbEtoiles]').value
+			),
+		};
+		// Création de la charge utile au format JSO?
+		const chargeUtile = JSON.stringify(avis);
+		// Appel de la fonction fetch avec toutes les informations nécessaires
+		fetch('http://localhost:8081/avis', {
+			method: 'POST',
+			headers: { 'Content-type': 'application/json' },
+			body: chargeUtile,
+		});
+	});
+}
