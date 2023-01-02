@@ -4,7 +4,9 @@ export const ajouterListenersAvis = () => {
 	for (let i = 0; i < piecesElements.length; i++) {
 		piecesElements[i].addEventListener('click', async (event) => {
 			const id = event.target.dataset.id;
-			await fetch(`http://localhost:8081/pieces/${id}/avis`);
+			const reponse = await fetch(
+				`http://localhost:8081/pieces/${id}/avis`
+			);
 			const avis = await reponse.json();
 			window.localStorage.setItem(
 				`avis-piece-${id}`,
@@ -50,4 +52,11 @@ export function ajoutListenerEnvoyerAvis() {
 			body: chargeUtile,
 		});
 	});
+}
+
+export async function afficherGraphiqueAvis() {
+	// Calcul du nombre total de commentaires par quantité d'étoiles attribués
+	const avis = fetch('http://localhost:8081/avis').then((avis) =>
+		avis.json()
+	);
 }

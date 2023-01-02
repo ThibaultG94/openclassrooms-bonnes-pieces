@@ -1,9 +1,13 @@
-// import { ajouterListenersAvis, ajoutListenerEnvoyerAvis, afficherAvis } from './avis';
+import {
+	ajouterListenersAvis,
+	ajoutListenerEnvoyerAvis,
+	afficherAvis,
+} from './avis.js';
 let pieces = window.localStorage.getItem('pieces');
 
 if (pieces === null) {
-	// Récupération des pièces depuis l'API
 	const reponse = await fetch('http://localhost:8081/pieces');
+	// Récupération des pièces depuis l'API
 	pieces = await reponse.json();
 	// Transformation des pièces en JSON
 	const valeurPieces = JSON.stringify(pieces);
@@ -14,7 +18,7 @@ if (pieces === null) {
 }
 
 // On appel la fonction pour ajouter le listner au formulaire
-// ajoutListenerEnvoyerAvis();
+ajoutListenerEnvoyerAvis();
 
 const genererPieces = (pieces) => {
 	for (let i = 0; i < pieces.length; i++) {
@@ -41,12 +45,10 @@ const genererPieces = (pieces) => {
 		stockElement.innerText = article.disponibilite
 			? 'En stock'
 			: 'Rupture de stock';
-		// avisBouton.dataset.id = article.id;
-		// avisBouton.texContent = 'Afficher les avis';
 
-		// const avisBouton = document.createElement('button');
-		// avisBouton.dataset.id = article.id;
-		// avisBouton.textContent = 'Afficher les avis';
+		const avisBouton = document.createElement('button');
+		avisBouton.dataset.id = article.id;
+		avisBouton.textContent = 'Afficher les avis';
 
 		// On rattache la balise article à la section Fiches
 		sectionFiches.appendChild(pieceElement);
@@ -56,25 +58,25 @@ const genererPieces = (pieces) => {
 		pieceElement.appendChild(categorieElement);
 		pieceElement.appendChild(descriptionElement);
 		pieceElement.appendChild(stockElement);
-		// pieceElement.appendChild(avisBouton);
+		pieceElement.appendChild(avisBouton);
 	}
 	// Ajout de la fonction ajoutListenerAvis
-	// ajouterListenersAvis();
+	ajouterListenersAvis();
 };
 
 // Premier affichage de la page
 genererPieces(pieces);
 
-// for (let i = 0; i < pieces.length; i++) {
-// 	const id = pieces[i].id;
-// 	const avisJSON = window.localStorage.getItem(`avis-piece-${id}`);
-// 	const avis = JSON.parse(avisJSON);
+for (let i = 0; i < pieces.length; i++) {
+	const id = pieces[i].id;
+	const avisJSON = window.localStorage.getItem(`avis-piece-${id}`);
+	const avis = JSON.parse(avisJSON);
 
-// 	if (avis != null) {
-// 		const pieceElement = document.query(`article[data-id="${id}]`);
-// 		afficherAvis(pieceElement, avis);
-// 	}
-// }
+	if (avis != null) {
+		const pieceElement = document.querySelector(`article[data-id="${id}]`);
+		afficherAvis(pieceElement, avis);
+	}
+}
 
 // gestion des boutons
 const boutonTrier = document.querySelector('.btn-trier');
