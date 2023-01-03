@@ -13,11 +13,8 @@ export const ajouterListenersAvis = () => {
 				JSON.stringify(avis)
 			);
 			const pieceElement = event.target.parentElement;
-			const avisElement = document.createElement('p');
-			for (let i = 0; i < avis.length; i++) {
-				avisElement.innerHTML += `<b>${avis[i].utilisateur}:</b>${avis[i].commentaire} <br/>`;
-			}
-			pieceElement.appendChild(avisElement);
+			console.log(pieceElement);
+			afficherAvis(pieceElement, avis);
 		});
 	}
 };

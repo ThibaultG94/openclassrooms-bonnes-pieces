@@ -72,8 +72,8 @@ for (let i = 0; i < pieces.length; i++) {
 	const avisJSON = window.localStorage.getItem(`avis-piece-${id}`);
 	const avis = JSON.parse(avisJSON);
 
-	if (avis != null) {
-		const pieceElement = document.querySelector(`article[data-id="${id}]`);
+	if (avis !== null) {
+		const pieceElement = document.querySelector(`article[data-id="${id}"]`);
 		afficherAvis(pieceElement, avis);
 	}
 }
