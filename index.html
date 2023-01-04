@@ -6,6 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Les Bonnes Pièces</title>
 		<link rel="stylesheet" href="styles.css" />
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	</head>
 	<body>
 		<header>
@@ -58,6 +61,8 @@
 				<button class="btn-maj">Mettre à jour les pièces</button>
 				<h3>Aperçu des avis</h3>
 				<canvas id="graphique-avis" width="300" height="300"></canvas>
+				<h3>Statistiques commentaires</h3>
+				<canvas id="graphique-dispo" width="300" height="300"></canvas>
 			</section>
 
 			<!-- Fiches produits -->
@@ -71,7 +76,10 @@
 			</section>
 		</main>
 
-		<script src="./node_modules/chart.js/dist/chart.js" defer></script>
+		<script
+			src="./node_modules/chart.js/dist/chart.js"
+			type="text/javascript"
+			defer></script>
 		<script type="module" src="pieces.js"></script>
 	</body>
 </html>

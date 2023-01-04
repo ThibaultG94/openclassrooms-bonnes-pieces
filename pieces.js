@@ -2,6 +2,7 @@ import {
 	ajouterListenersAvis,
 	ajoutListenerEnvoyerAvis,
 	afficherAvis,
+	afficherGraphiqueAvis,
 } from './avis.js';
 let pieces = window.localStorage.getItem('pieces');
 
@@ -172,3 +173,5 @@ const boutonMettreAJour = document.querySelector('.btn-maj');
 boutonMettreAJour.addEventListener('click', () => {
 	window.localStorage.removeItem('pieces');
 });
+
+await afficherGraphiqueAvis();
